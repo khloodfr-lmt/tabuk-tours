@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Tabuk, Saudi Arabia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fcfbf9;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            color: white;
+            z-index: 10;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .hero {
+            height: 80vh;
+            /* تم تعديل المسار هنا */
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./1.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin: 0;
+        }
+
+        .route-selection {
+            background: white;
+            width: 80%;
+            margin: -40px auto 50px;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .destinations {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .destination-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            gap: 40px;
+        }
+
+        .destination-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .image-container {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .destination-image {
+            width: 100%;
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s ease;
+        }
+
+        .destination-card:hover .destination-image {
+            transform: scale(1.1);
+        }
+
+        .destination-info {
+            flex: 1;
+        }
+
+        .btn-details {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #8c4a32;
+            font-weight: bold;
+            border-bottom: 2px solid #8c4a32;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">TABUK TOURS</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Destinations</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="phone"></div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>EXPLORE TABUK,<br>SAUDI ARABIA</h1>
+            <p>Discover the Wonders of Nature</p>
+        </div>
+    </section>
+
+    <section class="route-selection reveal">
+        <div>
+            <label>Location</label><br>
+            <select><option>Select Area...</option></select>
+        </div>
+        <button style="background:#8c4a32; color:white; border:none; padding:10px 20px; cursor:pointer;">SEARCH NOW</button>
+    </section>
+
+    <section class="destinations">
+
+        <div class="destination-card reveal">
+            <div class="image-container">
+                <div class="destination-image" style="background-image: url('./3.jpg');"></div>
+            </div>
+            <div class="destination-info">
+                <h2>Jabal al-Lawz Snow Trek</h2>
+                <p>Experience the rare beauty of snow in Saudi Arabia. Hike through the stunning white-capped peaks.</p>
+                <a href="#" class="btn-details">VIEW DETAILS</a>
+            </div>
+        </div>
+
+        <div class="destination-card reverse reveal">
+            <div class="image-container">
+                <div class="destination-image" style="background-image: url('./تبوك-2.jpg');"></div>
+            </div>
+            <div class="destination-info">
+                <h2>Wadi al-Disah Adventure</h2>
+                <p>Journey through the breathtaking red sandstone columns and lush palm groves.</p>
+                <a href="#" class="btn-details">VIEW DETAILS</a>
+            </div>
+        </div>
+
+        <div class="destination-card reveal">
+            <div class="image-container">
+                <div class="destination-image" style="background-image: url('./2.jpeg');"></div>
+            </div>
+            <div class="destination-info">
+                <h2>Tabuk Desert & Canyons</h2>
+                <p>Explore the vast, untouched wilderness of Tabuk's deserts and majestic rock formations.</p>
+                <a href="#" class="btn-details">VIEW DETAILS</a>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+</body>
+</html>
